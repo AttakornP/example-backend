@@ -1,0 +1,22 @@
+FROM python:3.8.3-buster as builder
+
+WORKDIR /usr/src/app
+
+RUN addgroup --gid 1000 appgroup && \
+    useradd -u 1000 -G appgroup -g 1000 -d /usr/src/ appuser
+
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh && \
+    chown appuser:appgroup /entrypoint.sh
+
+ADD requirements.txt .
+RUN pip install -r requirements.txt
+
+ADD Makefile .
+ADD hello_world/ .
+
+RUN chown -R appuser:appgroup /usr/src/
+
+USER appuser
+
+ENTRYPOINT ["/entrypoint.sh"]

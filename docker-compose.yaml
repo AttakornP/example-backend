@@ -8,4 +8,16 @@ services:
     container_name: hello_world
     hostname: hello_world
     ports:
+      - 9098:8080
+
+  hello_world-dev:
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    image: hello_word:develop
+    container_name: hello_world-dev
+    hostname: hello_world-dev
+    volumes:
+      - ./hello_world:/usr/src/app
+    ports:
       - 9090:8080
