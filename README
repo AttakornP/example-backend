@@ -1,9 +1,0 @@
-# Example Backend Project
-
-## How to
-
-```bash
-python manage.py migrate
-
-make run
-```
