@@ -10,12 +10,20 @@ make run
 
 ## How to build docker image
 ```bash
-docker-compose build
+# For developer
+docker-compose build hello_world-dev
+
+# For server
+docker-compose build hello_world-dev
 ```
 
 ## How to run docker container
 ```bash
-docker-compose up -d
+# For developer
+docker-compose up -d hello_world-dev
+
+# For server
+docker-compose up -d hello_world
 ```
 
 ## Open on browser with http://localhost:9090
